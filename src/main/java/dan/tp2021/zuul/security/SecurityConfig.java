@@ -38,6 +38,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 						.hasAnyAuthority("escritura")
 					.antMatchers(HttpMethod.DELETE, "/usuarios/api/**")
 						.hasAnyAuthority("escritura")
+//					.antMatchers(HttpMethod.GET, "/pedidos/api/empleado/**")
+//						.not().hasAuthority("lectura") Algo asi, no se si el cliente puede tener permisos para ver informacion de los empleados
 					.antMatchers(HttpMethod.GET, "/pedidos/api/**")
 						.hasAnyAuthority("lectura", "escritura")
 					.antMatchers(HttpMethod.POST, "/pedidos/api/**")
