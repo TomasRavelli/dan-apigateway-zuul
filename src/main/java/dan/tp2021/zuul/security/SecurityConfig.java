@@ -17,9 +17,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
-		http.cors()
+
+		http.cors().and().csrf().ignoringAntMatchers("/usuarios/login")
 			.and()
 				.authorizeRequests()
+					.antMatchers(HttpMethod.POST, "/usuarios/login")
+						.permitAll()
 					.antMatchers(HttpMethod.GET, "/**")
 						.hasAnyAuthority("administracion")
 					.antMatchers(HttpMethod.POST, "/**")
